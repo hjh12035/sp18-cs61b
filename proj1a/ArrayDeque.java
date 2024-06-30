@@ -15,7 +15,8 @@ public class ArrayDeque<T> {
     private void doubleSize() {
         T[] newItems = (T[]) new Object[items.length * 2];
         System.arraycopy(items, nextLast,
-                         newItems, newItems.length - (items.length - nextLast), items.length - nextLast);
+                         newItems, newItems.length - (items.length - nextLast),
+                  items.length - nextLast);
         System.arraycopy(items, 0, newItems, 0, nextLast);
         nextFirst = newItems.length - (items.length - nextLast) - 1;
         items = newItems;
