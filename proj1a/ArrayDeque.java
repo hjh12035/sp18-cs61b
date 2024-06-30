@@ -14,14 +14,15 @@ public class ArrayDeque<T> {
 
     private void doubleSize() {
         T[] newItems = (T[]) new Object[items.length * 2];
-        System.arraycopy(items, nextLast, newItems, newItems.length - (items.length - nextLast),items.length - nextLast);
+        System.arraycopy(items, nextLast,
+                         newItems, newItems.length - (items.length - nextLast), items.length - nextLast);
         System.arraycopy(items, 0, newItems, 0, nextLast);
         nextFirst = newItems.length - (items.length - nextLast) - 1;
         items = newItems;
     }
 
     public void addFirst(T item) {
-        if(size == items.length) {
+        if (size == items.length) {
             doubleSize();
         }
         size++;
@@ -30,7 +31,7 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
-        if(size == items.length) {
+        if (size == items.length) {
             doubleSize();
         }
         size++;
@@ -47,19 +48,21 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        for (int i = 0; i < size; ++i)
+        for (int i = 0; i < size; ++i) {
             System.out.print(get(i) + " ");
+        }
         System.out.println();
     }
 
     private void halfSize() {
         T[] newItems = (T[]) new Object[items.length / 2];
         if (nextLast < nextFirst) {
-            System.arraycopy(items, nextFirst + 1, newItems, newItems.length - (items.length - (nextFirst + 1)),items.length - (nextFirst + 1));
+            System.arraycopy(items, nextFirst + 1,
+                             newItems, newItems.length - (items.length - (nextFirst + 1)),
+                      items.length - (nextFirst + 1));
             System.arraycopy(items, 0, newItems, 0, nextLast);
             nextFirst = newItems.length - (items.length - (nextFirst + 1)) - 1;
-        }
-        else {
+        } else {
             System.arraycopy(items, nextFirst + 1, newItems, 0, size);
             nextFirst = newItems.length - 1;
             nextLast = size;
